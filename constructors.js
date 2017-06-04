@@ -115,11 +115,11 @@
    * @return {boolean} success  Whether mana was successfully spent.
    */
    Spellcaster.prototype.spendMana = function(cost) {
-    if(cost > this.mana) {
-      return false;
-    } else {
+    if(cost <= this.mana) {
       this.mana = this.mana - cost;
       return true;
+    } else {
+      return false;
     }
    };
 
@@ -150,10 +150,20 @@
    * @return {boolean}                    Whether the spell was successfully cast.
    */
    Spellcaster.prototype.invoke = function(spell, target) {
-    if(spell instanceof Spell) {
-
-    } else {
-
+    if(spell instanceof DamageSpell) {
+      if(target instanceof Spellcaster) {
+        if(this.spendMana(spell.cost)) {
+          target.inflictDamage(spell.damage);
+          return true;
+        }
+        return false;
+      }
+      return false;
+    } else if(spell instanceof Spell) {
+      if(this.spendMana(spell.cost)) {
+        return true;
+      }
+      return false;
     }
-
+    return false;
    };
