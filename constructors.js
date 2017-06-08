@@ -76,10 +76,11 @@
  * @method  spendMana
  * @method  invoke
  */
- function Spellcaster(name, health, mana) {
+ function Spellcaster(name, health, mana, imgURL) {
   this.name = name;
   this.health = health;
   this.mana = mana;
+  this.imgURL = imgURL;
   this.isAlive = true;
  }
 

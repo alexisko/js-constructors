@@ -4,20 +4,85 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>JavaScript Functions</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" href="lib/css/mocha.css">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div id="mocha"></div>
-        <script src="lib/js/mocha.js"></script>
-        <script src="lib/js/chai.js"></script>
-        <script src="lib/js/sinon-chai.js"></script>
-        <script src="lib/js/sinon.js"></script>
-        <script src="lib/js/blanket.js" data-cover-adapter="lib/js/mocha-blanket.js"></script>
-        <script>mocha.setup('bdd');</script>
+        <div class="overlay"></div>
+        <div class="container">
+        <h1>SPELLCASTERS</h1>
+          <div class="spellcaster-container spellcaster-one">
+            <div class="spellcaster">
+            <div class="bold-text">YOU:</div>
+              <div id="player-image" class="character-image"></div>
+              <div id="player-name" class="character-name"></div>
+              <div class="divTable">
+                <div class="divTableBody">
+                  <div class="divTableRow">
+                    <div class="divTableCell bold-text">Health: </div>
+                    <div id="player-health" class="divTableCell"></div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell bold-text">Mana: </div>
+                    <div id="player-mana" class="divTableCell"></div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell bold-text">Spell: </div>
+                    <div id="player-spell-one" class="divTableCell"></div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell bold-text">Cost: </div>
+                    <div id="player-spell-one-cost" class="divTableCell"></div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell bold-text">Damage: </div>
+                    <div id="player-spell-one-damage" class="divTableCell"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- DivTable.com -->
+            </div>
+            <br>
+            <button type="button" id="attackBtn">ATTACK!</button>
+          </div>
+
+          <!-- <div id="VS"><h2>vs</h2></div> -->
+
+          <div class="spellcaster-container spellcaster-two">
+            <div class="spellcaster">
+              <div class="bold-text">OPPONENT:</div>
+              <div id="opponent-image" class="character-image"></div>
+              <div id="opponent-name" class="character-name"></div>
+              <div class="divTable">
+                <div class="divTableBody">
+                  <div class="divTableRow">
+                    <div class="divTableCell bold-text">Health: </div>
+                    <div id="opponent-health" class="divTableCell"></div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell bold-text">Mana: </div>
+                    <div id="opponent-mana" class="divTableCell"></div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell bold-text">Spell: </div>
+                    <div id="opponent-spell-one" class="divTableCell"></div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell bold-text">Cost: </div>
+                    <div id="opponent-spell-one-cost" class="divTableCell"></div>
+                  </div>
+                  <div class="divTableRow">
+                    <div class="divTableCell bold-text">Damage: </div>
+                    <div id="opponent-spell-one-damage" class="divTableCell"></div>
+                  </div>
+                </div>
+              </div>
+              <div id="divDescription"></div>
+              <!-- DivTable.com -->
+            </div>
+          </div>
+        </div>
         <script src="constructors.js" data-cover></script>
-        <script src="test/constructors.spec.js"></script>
-        <script>mocha.run();</script>
+        <script src="characters.js" data-cover></script>
+        <script src="front-end.js" data-cover></script>
     </body>
 </html>
