@@ -2,9 +2,12 @@ var characters = createCharacters();
 
 //PLAYER
 var playerName, playerHealth, playerMana;
-playerName = document.getElementById("player-name").innerHTML = characters.player.name;
-playerHealth = document.getElementById("player-health").innerHTML = characters.player.health;
-playerMana = document.getElementById("player-mana").innerHTML = characters.player.mana;
+playerName = document.getElementById("player-name");
+playerHealth = document.getElementById("player-health");
+playerMana = document.getElementById("player-mana");
+playerName.innerHTML = characters.player.name;
+playerHealth.innerHTML = characters.player.health;
+playerMana.innerHTML = characters.player.mana;
 
 //static
 var playerImg = new Image();
@@ -16,9 +19,12 @@ document.getElementById("player-spell-one-damage").innerHTML = characters.player
 
 //OPPONENT
 var opponentName, opponentHealth, opponentMana;
-opponentName = document.getElementById("opponent-name").innerHTML = characters.opponent.name;
-opponentHealth = document.getElementById("opponent-health").innerHTML = characters.opponent.health;
-opponentMana = document.getElementById("opponent-mana").innerHTML = characters.opponent.mana;
+opponentName = document.getElementById("opponent-name");
+opponentHealth = document.getElementById("opponent-health");
+opponentMana = document.getElementById("opponent-mana");
+opponentName.innerHTML = characters.opponent.name;
+opponentHealth.innerHTML = characters.opponent.health;
+opponentMana.innerHTML = characters.opponent.mana;
 
 //static
 var opponentImg = new Image();
@@ -42,7 +48,7 @@ if(characters.opponent.name === 'INTERNET TROLL') {
     description = "The Evil Monkey was a resident of the Griffin household who lived in Chris' bedroom closet.";
     document.getElementById("divDescription").innerHTML = description;
   } else if(characters.opponent.name === 'COIN BANK WITH FACE') {
-    description = 'Straight out of hell.';
+    description = 'Straight from hell.';
     document.getElementById("divDescription").innerHTML = description;
   }
 
@@ -50,11 +56,32 @@ if(characters.opponent.name === 'INTERNET TROLL') {
 var overlay = document.getElementsByClassName("overlay");
 var attackBtn = document.getElementById("attackBtn");
 attackBtn.addEventListener('click', function() {
-  if(overlay.visibility === "hidden") {
-    overlay.visibility = "visible";
-    console.log(overlay);
-  } else {
-    overlay.visibility = "hidden";
-    console.log(overlay);
+  if(characters.playerSpell.damage === 0) { //player can't attack
+
+  } else { //player and opponent attack each other
+    characters.player.invoke(characters.playerSpell, characters.opponent);
+    characters.opponent.invoke(characters.opponentSpell, characters.player);
+    if(characters.player.health === 0) {
+      console.log(characters.getNewOpponent());
+    } else if (characters.player.mana === 0) {
+      console.log(characters.getNewOpponent());
+    } else if(characters.opponent.health === 0) {
+      console.log(characters.getNewOpponent());
+    } else if(characters.opponent.mana === 0) {
+      console.log(characters.getNewOpponent());
+    } else {
+      updateStats();
+    }
   }
 });
+
+function updateStats() {
+  playerHealth.innerHTML = characters.player.health;
+  playerMana.innerHTML = characters.player.mana;
+  opponentHealth.innerHTML = characters.opponent.health;
+  opponentMana.innerHTML = characters.opponent.mana;
+}
+
+function updateOpponent() {
+
+}

@@ -57,25 +57,36 @@ function createCharacters() {
     return arr[Math.floor(Math.random() * ((arr.length-1) - 0 + 1)) + 0];
   }
 
+  function getOpponentSpell(opponent) {
+    if(opponent.name === 'INTERNET TROLL') {
+      opponentSpell = trolling;
+    } else if(opponent.name === '1999 FURBY') {
+      opponentSpell = laser;
+    } else if(opponent.name === 'JABBA THE TRUMP') {
+      opponentSpell = buildWall;
+    } else if(opponent.name === 'EVIL MONKEY') {
+      opponentSpell = monkeySlap;
+    } else if(opponent.name === 'COIN BANK WITH FACE') {
+      opponentSpell = demonicPowers;
+    }
+  }
+
   player = getRandom(characterArr);
   playerSpell = getRandom(spellArr);
   opponent = getRandom(opponentArr);
-  if(opponent.name === 'INTERNET TROLL') {
-    opponentSpell = trolling;
-  } else if(opponent.name === '1999 FURBY') {
-    opponentSpell = laser;
-  } else if(opponent.name === 'JABBA THE TRUMP') {
-    opponentSpell = buildWall;
-  } else if(opponent.name === 'EVIL MONKEY') {
-    opponentSpell = monkeySlap;
-  } else if(opponent.name === 'COIN BANK WITH FACE') {
-    opponentSpell = demonicPowers;
+  getOpponentSpell(opponent);
+
+  function getNewOpponent() {
+    var newOpponent = getRandom(opponentArr);
+    return newOpponent;
   }
+
   return {
     player: player,
     opponent: opponent,
     playerSpell: playerSpell,
-    opponentSpell: opponentSpell
+    opponentSpell: opponentSpell,
+    getNewOpponent: getNewOpponent
   };
 }
 

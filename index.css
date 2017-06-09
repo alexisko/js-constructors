@@ -43,6 +43,17 @@ button:focus {
   outline: 0;
 }
 
+button:active {
+  transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+  border-bottom: 1px solid;
+}
+
+.animate {
+  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+}
+
 img {
   width: 100px;
   height: 100px;
@@ -57,6 +68,19 @@ img {
   background-color: rgba(0,0,0,0.5);
   z-index: 10;
   visibility: hidden;
+}
+
+.modal {
+  position: fixed;
+  top: 20%;
+  left: 30%;
+  height: 400px;
+  width: 400px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  text-align: center;
+  z-index: 11;
 }
 
 .container {
